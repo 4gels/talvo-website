@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحميل Talvo - برنامج إدارة المستلزمات الطبية</title>
+    <title>تحميل Talvo - نظام إدارة المستلزمات الطبية</title>
     <style>
         * {
             margin: 0;
@@ -15,19 +15,22 @@
         body {
             background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #0a0a1a 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* ===== البطاقة الرئيسية ===== */
         .card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
             border-radius: 30px;
             padding: 40px 50px;
-            max-width: 550px;
-            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
             text-align: center;
@@ -39,24 +42,20 @@
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
         }
 
-        .logo {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #0d6efd, #6610f2);
+        .logo-img {
+            width: 120px;
+            height: 120px;
             border-radius: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 20px;
-            font-size: 50px;
-            color: white;
-            font-weight: 900;
-            box-shadow: 0 10px 30px rgba(13, 110, 253, 0.3);
+            object-fit: contain;
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            margin: 0 auto 15px;
+            display: block;
         }
 
         h1 {
             color: #fff;
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
             margin-bottom: 5px;
             letter-spacing: 1px;
@@ -64,7 +63,7 @@
 
         .subtitle {
             color: #8a8ab5;
-            font-size: 14px;
+            font-size: 16px;
             margin-bottom: 25px;
             font-weight: 300;
         }
@@ -73,9 +72,9 @@
             display: inline-block;
             background: rgba(13, 110, 253, 0.2);
             color: #6ea8fe;
-            padding: 4px 16px;
+            padding: 4px 20px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 14px;
             border: 1px solid rgba(13, 110, 253, 0.2);
             margin-bottom: 25px;
         }
@@ -93,7 +92,7 @@
             padding: 10px 14px;
             border-radius: 12px;
             color: #c8c8e8;
-            font-size: 13px;
+            font-size: 14px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
@@ -117,7 +116,7 @@
 
         .file-info span {
             color: #8a8ab5;
-            font-size: 13px;
+            font-size: 14px;
         }
 
         .file-info strong {
@@ -147,14 +146,6 @@
             box-shadow: 0 12px 35px rgba(13, 110, 253, 0.5);
         }
 
-        .download-btn:active {
-            transform: scale(0.98);
-        }
-
-        .download-btn i {
-            margin-left: 10px;
-        }
-
         .btn-secondary {
             background: rgba(255, 255, 255, 0.08);
             box-shadow: none;
@@ -165,16 +156,90 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.15);
-            box-shadow: none;
+        }
+
+        /* ===== جدول الاختصارات ===== */
+        .shortcuts-section {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 30px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 20px;
+        }
+
+        .shortcuts-section h2 {
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 15px;
+        }
+
+        .shortcuts-section h2 span {
+            color: #6ea8fe;
+        }
+
+        .shortcut-group {
+            margin-bottom: 25px;
+        }
+
+        .shortcut-group h3 {
+            color: #8a8ab5;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            padding-right: 10px;
+            border-right: 3px solid #0d6efd;
+        }
+
+        .shortcut-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 30px;
+        }
+
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+            transition: 0.2s;
+        }
+
+        .shortcut-item:hover {
+            background: rgba(255,255,255,0.06);
+        }
+
+        .shortcut-key {
+            background: rgba(255,255,255,0.08);
+            color: #c8c8e8;
+            padding: 2px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: monospace;
+            border: 1px solid rgba(255,255,255,0.05);
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        .shortcut-desc {
+            color: #a8a8c8;
+            font-size: 14px;
         }
 
         .footer-text {
             color: #5a5a7a;
-            font-size: 12px;
-            margin-top: 20px;
+            font-size: 13px;
+            text-align: center;
+            margin-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             padding-top: 20px;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         .footer-text a {
@@ -186,7 +251,8 @@
             text-decoration: underline;
         }
 
-        @media (max-width: 480px) {
+        /* ===== استجابة للشاشات الصغيرة ===== */
+        @media (max-width: 768px) {
             .card {
                 padding: 25px 20px;
             }
@@ -194,32 +260,62 @@
                 grid-template-columns: 1fr;
             }
             h1 {
-                font-size: 26px;
+                font-size: 28px;
             }
-            .logo {
-                width: 80px;
-                height: 80px;
-                font-size: 40px;
+            .logo-img {
+                width: 90px;
+                height: 90px;
+            }
+            .shortcuts-section {
+                padding: 20px;
+            }
+            .shortcut-grid {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .shortcut-item {
+                padding: 4px 8px;
+            }
+            .shortcut-key {
+                font-size: 12px;
+                padding: 1px 10px;
+            }
+            .shortcut-desc {
+                font-size: 13px;
             }
         }
 
-        /* تنسيق أيقونة التحميل */
-        .download-icon {
-            display: inline-block;
-            margin-left: 10px;
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px 15px;
+            }
+            .logo-img {
+                width: 70px;
+                height: 70px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .download-btn {
+                font-size: 17px;
+                padding: 14px;
+            }
         }
     </style>
 </head>
 <body>
 
+<div class="container">
+
+    <!-- ===== البطاقة الرئيسية ===== -->
     <div class="card">
 
         <!-- الشعار -->
-        <div class="logo">T</div>
+        <img src="https://raw.githubusercontent.com/4gels/talvo-website/refs/heads/main/splash.png" alt="شعار Talvo" class="logo-img">
 
         <!-- العنوان -->
         <h1>Talvo</h1>
-        <p class="subtitle">نظام إدارة المستلزمات الطبية</p>
+        <p class="subtitle">نظام إدارة المستلزمات الطبية والمستحضرات</p>
 
         <!-- رقم الإصدار -->
         <div class="version-badge">الإصدار 1.0.2</div>
@@ -232,12 +328,15 @@
             <div class="feature-item">إدارة المخزون</div>
             <div class="feature-item">تقارير متقدمة</div>
             <div class="feature-item">دعم الشبكة VPN</div>
+            <div class="feature-item">إدارة الموظفين</div>
+            <div class="feature-item">إدارة العملاء والموردين</div>
         </div>
 
         <!-- معلومات الملف -->
         <div class="file-info">
             <span>📦 حجم الملف: <strong>~ 150 ميجابايت</strong></span>
             <span style="display:block; margin-top:5px;">🖥️ نظام التشغيل: <strong>Windows 7/8/10/11</strong></span>
+            <span style="display:block; margin-top:5px;">📅 تاريخ الإصدار: <strong>سبتمبر 2026</strong></span>
         </div>
 
         <!-- زر التحميل الرئيسي -->
@@ -245,18 +344,72 @@
             ⬇️ تحميل Talvo الآن
         </a>
 
-        <!-- زر احتياطي (إذا ظهرت مشكلة في التحميل) -->
+        <!-- زر احتياطي -->
         <a href="https://drive.google.com/uc?export=download&confirm=t&id=1H4mB6fjaREFQlpSJv7ZfC4nJBv5KIMua" class="download-btn btn-secondary" style="font-size: 14px;">
             🔄 رابط احتياطي للتحميل
         </a>
 
-        <!-- تذييل -->
-        <div class="footer-text">
-            © 2026 Talvo. جميع الحقوق محفوظة.<br>
-            تم التطوير بواسطة <a href="#">MGZON</a>
+    </div>
+
+    <!-- ===== جدول الاختصارات ===== -->
+    <div class="shortcuts-section">
+
+        <h2>⌨️ <span>دليل اختصارات</span> لوحة المفاتيح</h2>
+
+        <!-- مجموعة 1: Main Window -->
+        <div class="shortcut-group">
+            <h3>النافذة الرئيسية</h3>
+            <div class="shortcut-grid">
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + 1</span><span class="shortcut-desc">فتح الآلة الحاسبة</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + G</span><span class="shortcut-desc">فتح نافذة فاتورة بيع جديدة</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + F</span><span class="shortcut-desc">فتح نافذة مرتجع مبيعات</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + Z</span><span class="shortcut-desc">فتح إدارة المرتجعات المتكاملة</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + Y</span><span class="shortcut-desc">فتح نافذة إضافة منتج جديد</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + W</span><span class="shortcut-desc">فتح نافذة إضافة تشغيلة جديدة</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + D</span><span class="shortcut-desc">فتح نافذة فاتورة شراء جديدة</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + N</span><span class="shortcut-desc">فتح نافذة مرتجع شراء</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + B</span><span class="shortcut-desc">إدارة الرواتب والمكافآت</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + Shift + N</span><span class="shortcut-desc">فتح كشكول النواقص</span></div>
+            </div>
         </div>
 
+        <!-- مجموعة 2: Products View -->
+        <div class="shortcut-group">
+            <h3>عرض المنتجات</h3>
+            <div class="shortcut-grid">
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + P</span><span class="shortcut-desc">فتح نافذة طباعة / PDF</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + 3</span><span class="shortcut-desc">التركيز على حقل البحث (بحث سريع)</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">F5</span><span class="shortcut-desc">تحديث البيانات</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + N</span><span class="shortcut-desc">إضافة منتج جديد</span></div>
+            </div>
+        </div>
+
+        <!-- مجموعة 3: ProductsPrintPreview -->
+        <div class="shortcut-group">
+            <h3>معاينة الطباعة (Products Print Preview)</h3>
+            <div class="shortcut-grid">
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + P</span><span class="shortcut-desc">طباعة</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + S</span><span class="shortcut-desc">تصدير PDF</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + E</span><span class="shortcut-desc">تصدير Excel</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Ctrl + W</span><span class="shortcut-desc">تصدير Word</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">Escape</span><span class="shortcut-desc">إغلاق النافذة</span></div>
+                <div class="shortcut-item"><span class="shortcut-key">F5</span><span class="shortcut-desc">تحديث المعاينة</span></div>
+            </div>
+        </div>
+
+        <p style="color:#5a5a7a; font-size:13px; text-align:center; margin-top:15px; border-top:1px solid rgba(255,255,255,0.05); padding-top:15px;">
+            💡 هذه الاختصارات متاحة في الإصدار 1.0.2 فما فوق
+        </p>
+
     </div>
+
+    <!-- ===== تذييل ===== -->
+    <div class="footer-text">
+        © 2026 Talvo. جميع الحقوق محفوظة.<br>
+        تم التطوير بواسطة <a href="#">MGZON</a> — نظام إدارة المستلزمات الطبية
+    </div>
+
+</div>
 
 </body>
 </html>
